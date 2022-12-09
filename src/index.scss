@@ -16,7 +16,9 @@ tbody tr td {
   padding: 15px 15px;
   vertical-align: top;
   height: 50px;
-  border-right: 1px solid #e5e5e5;
+  &:not(.right-corner) {
+    border-right: 1px solid red;
+  }
 }
 
 .left-corner {
@@ -27,7 +29,7 @@ tbody tr td {
 .right-corner {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  border: none !important;
+  // border: none;
 }
 
 thead tr th {
@@ -35,7 +37,9 @@ thead tr th {
   height: 50px;
   text-align: left;
   padding: 0px 15px;
-  border-right: 1px solid #e5e5e5;
+  &:not(.right-corner) {
+    border-right: 1px solid red;
+  }
 }
 
 .action-bar {
