@@ -13,7 +13,8 @@
     "antd": "^4.24.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.39.4"
+    "react-hook-form": "^7.39.4",
+    "sass": "^1.56.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import GdlTableCheckbox from "./GdlTableCheckbox";
 
 import { useCallback, useMemo, useRef, useState } from "react";
