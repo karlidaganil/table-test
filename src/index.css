@@ -8,18 +8,15 @@
 
 table {
   width: 100%;
-  border-spacing: 1px 10px;
-}
-
-tbody tr td {
-  background-color: white;
-  height: 50px;
+  border-spacing: 0px 10px;
 }
 
 tbody tr td {
   background-color: white;
   padding: 15px 15px;
   vertical-align: top;
+  height: 50px;
+  border-right: 1px solid #e5e5e5;
 }
 
 .left-corner {
@@ -30,6 +27,7 @@ tbody tr td {
 .right-corner {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border: none !important;
 }
 
 thead tr th {
@@ -37,6 +35,7 @@ thead tr th {
   height: 50px;
   text-align: left;
   padding: 0px 15px;
+  border-right: 1px solid #e5e5e5;
 }
 
 .action-bar {
