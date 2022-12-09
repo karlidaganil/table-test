@@ -83,47 +83,62 @@ const GdlTableCheckbox = ({
   console.log(getSelectedRowModel());
 
   return (
-    <table>
-      <thead>
-        {getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header, index) => (
-              <th
-                key={header.id}
-                className={`${index === 0 ? "left-corner" : ""}  ${
-                  index === headerGroup.headers.length - 1 ? "right-corner" : ""
-                }`}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-              </th>
+    <>
+      {isAnyRowSelected && (
+        <div className="action-bar">
+          <Checkbox
+            checked={table.getIsAllRowsSelected()}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+          ></Checkbox>
+          {selectedNode}
+        </div>
+      )}
+      <table>
+        {!isAnyRowSelected && (
+          <thead>
+            {getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header, index) => (
+                  <th
+                    key={header.id}
+                    className={`${index === 0 ? "left-corner" : ""}  ${
+                      index === headerGroup.headers.length - 1
+                        ? "right-corner"
+                        : ""
+                    }`}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell, index) => (
-              <td
-                key={cell.id}
-                className={`${index === 0 ? "left-corner" : ""}  ${
-                  index === row.getVisibleCells().length - 1
-                    ? "right-corner"
-                    : ""
-                }`}
-              >
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </thead>
+        )}
+        <tbody>
+          {getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell, index) => (
+                <td
+                  key={cell.id}
+                  className={`${index === 0 ? "left-corner" : ""}  ${
+                    index === row.getVisibleCells().length - 1
+                      ? "right-corner"
+                      : ""
+                  }`}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 export default GdlTableCheckbox;

@@ -19,7 +19,8 @@ const data = [
     action: "New",
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
-    reference: "Folder : TRDFX Broker: BLMG Purpose: TRD",
+    reference:
+      "Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD",
     status: "Warning Lorem ipsum",
   },
   {
@@ -85,23 +86,26 @@ function App() {
   ]);
 
   return (
-    <GdlTableCheckbox
-      data={data}
-      columns={columns}
-      setSelectedRows={setSelectedRows}
-      checkboxed={true}
-      selectedNode={
-        <>
-          <span className="mr">{selectedRows.length} rows selected</span>
-          <span className="mr">{selectedRows.length} rows selected</span>
-          <span className="mr">{selectedRows.length} rows selected</span>
-          <span className="mr">{selectedRows.length} rows selected</span>
-          <button className="mr">send</button>
-          <button className="mr">ignore</button>
-          <button>edit</button>
-        </>
-      }
-    />
+    <div
+      style={{
+        width: "60%",
+      }}
+    >
+      <GdlTableCheckbox
+        data={data}
+        columns={columns}
+        setSelectedRows={setSelectedRows}
+        checkboxed={true}
+        selectedNode={
+          <>
+            <span className="mr">{selectedRows.length} rows selected</span>
+            <button className="mr">send</button>
+            <button className="mr">ignore</button>
+            <button>edit</button>
+          </>
+        }
+      />
+    </div>
   );
 }
 
