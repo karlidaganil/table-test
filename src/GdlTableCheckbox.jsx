@@ -8,6 +8,8 @@ import React, { useEffect } from "react";
 
 import { Checkbox } from "antd";
 
+import classNames from "classnames";
+
 const columnHelper = createColumnHelper();
 
 const checkboxes = [
@@ -36,25 +38,13 @@ const GdlTableCheckbox = ({
   selectedNode,
   rowHoverStyle,
 }) => {
-  const $columns = columns.map((column) => {
-    const obj = {};
-    obj.id = column.accessor;
-    obj.header = column.header;
-    if (column.cell) {
-      obj.cell = column.cell;
-    }
-    return columnHelper.accessor(column.accessor, obj);
-  });
+  const $columns = columns.map((column) =>
+    columnHelper.accessor(column.accessor, Object.assign({}, column))
+  );
 
-  const $columnsCheckbox = [...checkboxes, ...columns].map((column) => {
-    const obj = {};
-    obj.id = column.accessor;
-    obj.header = column.header;
-    if (column.cell) {
-      obj.cell = column.cell;
-    }
-    return columnHelper.accessor(column.accessor, obj);
-  });
+  const $columnsCheckbox = [...checkboxes, ...columns].map((column) =>
+    columnHelper.accessor(column.accessor, Object.assign({}, column))
+  );
 
   const table = useReactTable({
     data,
@@ -106,11 +96,13 @@ const GdlTableCheckbox = ({
                 {headerGroup.headers.map((header, index) => (
                   <th
                     key={header.id}
-                    className={`${index === 0 ? "left-corner" : ""}  ${
-                      index === headerGroup.headers.length - 1
-                        ? "right-corner"
-                        : ""
-                    }`}
+                    className={classNames({
+                      "left-corner": index === 0,
+                      "right-corner": index === headerGroup.headers.length - 1,
+                      [header.column.columnDef.className]:
+                        header.column.columnDef.className !== undefined,
+                    })}
+                    style={header.column.columnDef.style}
                   >
                     {header.isPlaceholder
                       ? null
@@ -130,11 +122,14 @@ const GdlTableCheckbox = ({
               {row.getVisibleCells().map((cell, index) => (
                 <td
                   key={cell.id}
-                  className={`${index === 0 ? "left-corner" : ""}  ${
-                    index === row.getVisibleCells().length - 1
-                      ? "right-corner"
-                      : ""
-                  }`}
+                  className={classNames({
+                    "left-corner": index === 0,
+                    "right-corner": index === row.getVisibleCells().length - 1,
+                    [cell.column.columnDef.className]:
+                      cell.column.columnDef.className !== undefined,
+                    "show-on-hover": cell.column.columnDef.showOnRowHover,
+                  })}
+                  style={cell.column.columnDef.style}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>

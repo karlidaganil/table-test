@@ -3,6 +3,10 @@ import GdlTableCheckbox from "./GdlTableCheckbox";
 
 import { useCallback, useMemo, useRef, useState } from "react";
 
+import settingsIcon from "./assets/settings.svg";
+import editIcon from "./assets/edit.svg";
+import trashIcon from "./assets/trash.svg";
+
 const data = [
   {
     platform: "BLMG",
@@ -20,8 +24,8 @@ const data = [
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
     reference:
-      "Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD",
-    status: "Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum",
+      "TRDFX Broker: BLMG Purpose: TRD Folder TRDFX Broker  BLMG Purpose: TRD Folder TRDFX Broker: BLMG Purpose  TRD Folder TRDFX Broker: BLMG Purpose: TRD Folder",
+    status: "Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum",
   },
   {
     platform: "BLMG",
@@ -55,6 +59,7 @@ function App() {
     //     ></Checkbox>
     //   ),
     // },
+
     {
       accessor: "platform",
       header: "Platform",
@@ -78,10 +83,38 @@ function App() {
     {
       accessor: "reference",
       header: "Reference",
+      // className: "reference-column",
+      style: {
+        backgroundColor: "#EAF7EE",
+      },
     },
     {
       accessor: "status",
       header: "Status",
+      style: {
+        backgroundColor: "#EBF4FF",
+      },
+    },
+    {
+      header: <img src={settingsIcon} />,
+      accessor: "actions",
+      cell: () => (
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          <img
+            src={editIcon}
+            width={24}
+            style={{
+              marginRight: "10px",
+            }}
+          />
+          <img src={trashIcon} width={24} />
+        </div>
+      ),
+      showOnRowHover: true,
     },
   ]);
 
@@ -96,9 +129,9 @@ function App() {
         data={data}
         columns={columns}
         setSelectedRows={setSelectedRows}
-        checkboxed={true}
+        checkboxed={false}
         rowHoverStyle={{
-          background: false,
+          background: true,
           border: false,
         }}
         selectedNode={
