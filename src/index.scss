@@ -91,6 +91,7 @@ table {
 table {
   tbody {
     tr {
+      cursor: pointer;
       &:hover {
         .show-on-hover {
           * {

@@ -6,6 +6,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import settingsIcon from "./assets/settings.svg";
 import editIcon from "./assets/edit.svg";
 import trashIcon from "./assets/trash.svg";
+import arrowIcon from "./assets/arrow.svg";
 
 const data = [
   {
@@ -23,9 +24,9 @@ const data = [
     action: "New",
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
-    reference:
-      "TRDFX Broker: BLMG Purpose: TRD Folder TRDFX Broker  BLMG Purpose: TRD Folder TRDFX Broker: BLMG Purpose  TRD Folder TRDFX Broker: BLMG Purpose: TRD Folder",
-    status: "Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum",
+    reference: "X Broker: BLMG Purpose: TRD Folder",
+    status:
+      "Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum",
   },
   {
     platform: "BLMG",
@@ -60,6 +61,22 @@ function App() {
     //   ),
     // },
 
+    {
+      accessor: "move",
+      header: "",
+      cell: () => (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <img src={arrowIcon} width={16} />
+          <img src={arrowIcon} width={16} className="rotate-90" />
+        </div>
+      ),
+      showOnRowHover: true,
+    },
     {
       accessor: "platform",
       header: "Platform",
@@ -121,7 +138,7 @@ function App() {
   return (
     <div
       style={{
-        width: "60%",
+        width: "100%",
         padding: "50px",
       }}
     >
@@ -129,10 +146,13 @@ function App() {
         data={data}
         columns={columns}
         setSelectedRows={setSelectedRows}
-        checkboxed={true}
+        checkboxed={false}
         rowHoverStyle={{
           background: false,
           border: true,
+        }}
+        onRowClick={(row) => {
+          console.log(row);
         }}
         selectedNode={
           <>

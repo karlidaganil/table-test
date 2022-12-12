@@ -36,6 +36,7 @@ const GdlTableCheckbox = ({
   checkboxed,
   setSelectedRows,
   selectedNode,
+  onRowClick,
   rowHoverStyle,
 }) => {
   const $columns = columns.map((column) =>
@@ -120,6 +121,7 @@ const GdlTableCheckbox = ({
                 "no-hover-bg": !rowHoverStyle.background,
                 "no-hover-border": !rowHoverStyle.border,
               })}
+              onClick={() => onRowClick(row)}
             >
               {row.getVisibleCells().map((cell, index) => (
                 <td
