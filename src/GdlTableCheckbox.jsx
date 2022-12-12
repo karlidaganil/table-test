@@ -36,7 +36,7 @@ const GdlTableCheckbox = ({
   checkboxed,
   setSelectedRows,
   selectedNode,
-  onRowClick,
+  onRowClick = () => {},
   rowHoverStyle,
 }) => {
   const $columns = columns.map((column) =>

@@ -71,8 +71,23 @@ function App() {
             flexDirection: "column",
           }}
         >
-          <img src={arrowIcon} width={16} />
-          <img src={arrowIcon} width={16} className="rotate-90" />
+          <img
+            src={arrowIcon}
+            width={16}
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("up");
+            }}
+          />
+          <img
+            src={arrowIcon}
+            width={16}
+            className="rotate-90"
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("down");
+            }}
+          />
         </div>
       ),
       showOnRowHover: true,
@@ -127,13 +142,26 @@ function App() {
             style={{
               marginRight: "10px",
             }}
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("edit");
+            }}
           />
-          <img src={trashIcon} width={24} />
+          <img
+            src={trashIcon}
+            width={24}
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("trash");
+            }}
+          />
         </div>
       ),
       showOnRowHover: true,
     },
   ]);
+
+  console.log("render");
 
   return (
     <div
@@ -151,9 +179,9 @@ function App() {
           background: false,
           border: true,
         }}
-        onRowClick={(row) => {
-          console.log(row);
-        }}
+        // onRowClick={(row) => {
+        //   console.log(row);
+        // }}
         selectedNode={
           <>
             <span className="mr">{selectedRows.length} rows selected</span>
@@ -162,6 +190,16 @@ function App() {
             <button>edit</button>
           </>
         }
+      />
+
+      <img
+        src={arrowIcon}
+        width={16}
+        className="rotate-90"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log("asdasd");
+        }}
       />
     </div>
   );
