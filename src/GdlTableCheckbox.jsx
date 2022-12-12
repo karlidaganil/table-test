@@ -73,10 +73,6 @@ const GdlTableCheckbox = ({
 
   console.log(getSelectedRowModel());
 
-  const rowHoverClassNames = `${
-    !rowHoverStyle.background ? "no-hover-bg" : ""
-  } ${!rowHoverStyle.border ? "no-hover-border" : ""}`;
-
   return (
     <>
       {isAnyRowSelected && (
@@ -118,7 +114,13 @@ const GdlTableCheckbox = ({
         )}
         <tbody>
           {getRowModel().rows.map((row) => (
-            <tr key={row.id} className={rowHoverClassNames}>
+            <tr
+              key={row.id}
+              className={classNames({
+                "no-hover-bg": !rowHoverStyle.background,
+                "no-hover-border": !rowHoverStyle.border,
+              })}
+            >
               {row.getVisibleCells().map((cell, index) => (
                 <td
                   key={cell.id}

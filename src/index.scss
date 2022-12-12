@@ -61,10 +61,6 @@ thead tr th {
   margin-top: 10px;
 }
 
-.mr {
-  margin: 0px 10px;
-}
-
 table {
   tbody {
     tr:not(.no-hover-border) {
@@ -115,4 +111,8 @@ table {
 .reference-column {
   background-color: red;
   color: white;
+}
+
+.mr {
+  margin: 0px 10px;
 }

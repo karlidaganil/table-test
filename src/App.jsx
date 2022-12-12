@@ -129,9 +129,9 @@ function App() {
         data={data}
         columns={columns}
         setSelectedRows={setSelectedRows}
-        checkboxed={false}
+        checkboxed={true}
         rowHoverStyle={{
-          background: true,
+          background: false,
           border: true,
         }}
         selectedNode={
