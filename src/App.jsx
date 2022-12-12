@@ -11,7 +11,7 @@ const data = [
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
     reference: "Folder : TRDFX Broker: BLMG Purpose: TRD",
-    status: "Warning Lorem ipsum",
+    status: "Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum",
   },
   {
     platform: "BLMG",
@@ -21,7 +21,7 @@ const data = [
     tradeDate: "21/09/2022",
     reference:
       "Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD Folder : TRDFX Broker: BLMG Purpose: TRD",
-    status: "Warning Lorem ipsum",
+    status: "Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum",
   },
   {
     platform: "BLMG",
@@ -30,7 +30,7 @@ const data = [
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
     reference: "Folder : TRDFX Broker: BLMG Purpose: TRD",
-    status: "Warning Lorem ipsum",
+    status: "Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum",
   },
 ];
 
@@ -89,13 +89,14 @@ function App() {
     <div
       style={{
         width: "60%",
+        padding: "50px",
       }}
     >
       <GdlTableCheckbox
         data={data}
         columns={columns}
         setSelectedRows={setSelectedRows}
-        checkboxed={true}
+        checkboxed={false}
         selectedNode={
           <>
             <span className="mr">{selectedRows.length} rows selected</span>
@@ -105,6 +106,9 @@ function App() {
           </>
         }
       />
+      {/* <div className="test-box">test</div>
+      <div className="test-box">test</div>
+      <div className="test-box">test</div> */}
     </div>
   );
 }

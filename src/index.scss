@@ -16,20 +16,23 @@ tbody tr td {
   padding: 15px;
   vertical-align: top;
   height: 50px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   &:not(.right-corner) {
-    border-right: 1px solid red;
+    border-right: 1px solid #e5e5e5;
   }
 }
 
 .left-corner {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  border-left: 1px solid transparent;
 }
 
 .right-corner {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  // border: none;
+  border-right: 1px solid transparent;
 }
 
 thead tr th {
@@ -37,8 +40,10 @@ thead tr th {
   height: 50px;
   text-align: left;
   padding: 0px 15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   &:not(.right-corner) {
-    border-right: 1px solid red;
+    border-right: 1px solid #e5e5e5;
   }
 }
 
@@ -56,14 +61,30 @@ thead tr th {
   margin: 0px 10px;
 }
 
-// tr:hover {
-//   background-color: red;
-// }
+tr {
+  &:hover {
+    background-color: #eaf7ee;
+    td {
+      background-color: transparent;
+    }
+  }
+}
 
-// tr:hover td {
-//   background-color: transparent;
-// }
-
-// table tr:hover td {
-//   border: 1px solid red;
-// }
+table {
+  tbody {
+    tr {
+      &:hover {
+        td {
+          border-top: 1px solid #03ea76;
+          border-bottom: 1px solid #03ea76;
+        }
+        .right-corner {
+          border-right: 1px solid #03ea76;
+        }
+        .left-corner {
+          border-left: 1px solid #03ea76;
+        }
+      }
+    }
+  }
+}
