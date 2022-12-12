@@ -8,7 +8,7 @@ import editIcon from "./assets/edit.svg";
 import trashIcon from "./assets/trash.svg";
 import arrowIcon from "./assets/arrow.svg";
 
-const data = [
+const $data = [
   {
     platform: "BLMG",
     type: "Spot",
@@ -39,127 +39,114 @@ const data = [
   },
 ];
 
+const $columns = [
+  {
+    accessor: "move",
+    header: "",
+    cell: () => (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <img
+          src={arrowIcon}
+          width={16}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("up");
+          }}
+        />
+        <img
+          src={arrowIcon}
+          width={16}
+          className="rotate-90"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("down");
+          }}
+        />
+      </div>
+    ),
+    showOnRowHover: true,
+  },
+  {
+    accessor: "platform",
+    header: "Platform",
+  },
+  {
+    accessor: "type",
+    header: "Type",
+  },
+  {
+    accessor: "action",
+    header: "Action",
+  },
+  {
+    accessor: "deal",
+    header: "Deal",
+  },
+  {
+    accessor: "tradeDate",
+    header: "Trade Date",
+  },
+  {
+    accessor: "reference",
+    header: "Reference",
+    // className: "reference-column",
+    // style: {
+    //   backgroundColor: "#EAF7EE",
+    // },
+  },
+  {
+    accessor: "status",
+    header: "Status",
+    // style: {
+    //   backgroundColor: "#EBF4FF",
+    // },
+  },
+  {
+    header: <img src={settingsIcon} />,
+    accessor: "actions",
+    cell: () => (
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <img
+          src={editIcon}
+          width={24}
+          style={{
+            marginRight: "10px",
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("edit");
+          }}
+        />
+        <img
+          src={trashIcon}
+          width={24}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("trash");
+          }}
+        />
+      </div>
+    ),
+    showOnRowHover: true,
+  },
+];
+
 function App() {
+  const [data, setData] = useState($data);
+  const [columns, setColumns] = useState($columns);
+
   const [selectedRows, setSelectedRows] = useState([]);
 
   console.log(selectedRows);
-
-  const columns = useMemo(() => [
-    // {
-    //   accessor: "checkbox",
-    //   header: ({ table }) => (
-    //     <Checkbox
-    //       checked={table.getIsAllRowsSelected()}
-    //       onChange={table.getToggleAllRowsSelectedHandler()}
-    //     ></Checkbox>
-    //   ),
-    //   cell: ({ row }) => (
-    //     <Checkbox
-    //       checked={row.getIsSelected()}
-    //       onChange={row.getToggleSelectedHandler()}
-    //     ></Checkbox>
-    //   ),
-    // },
-
-    {
-      accessor: "move",
-      header: "",
-      cell: () => (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <img
-            src={arrowIcon}
-            width={16}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("up");
-            }}
-          />
-          <img
-            src={arrowIcon}
-            width={16}
-            className="rotate-90"
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("down");
-            }}
-          />
-        </div>
-      ),
-      showOnRowHover: true,
-    },
-    {
-      accessor: "platform",
-      header: "Platform",
-    },
-    {
-      accessor: "type",
-      header: "Type",
-    },
-    {
-      accessor: "action",
-      header: "Action",
-    },
-    {
-      accessor: "deal",
-      header: "Deal",
-    },
-    {
-      accessor: "tradeDate",
-      header: "Trade Date",
-    },
-    {
-      accessor: "reference",
-      header: "Reference",
-      // className: "reference-column",
-      // style: {
-      //   backgroundColor: "#EAF7EE",
-      // },
-    },
-    {
-      accessor: "status",
-      header: "Status",
-      // style: {
-      //   backgroundColor: "#EBF4FF",
-      // },
-    },
-    {
-      header: <img src={settingsIcon} />,
-      accessor: "actions",
-      cell: () => (
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <img
-            src={editIcon}
-            width={24}
-            style={{
-              marginRight: "10px",
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("edit");
-            }}
-          />
-          <img
-            src={trashIcon}
-            width={24}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("trash");
-            }}
-          />
-        </div>
-      ),
-      showOnRowHover: true,
-    },
-  ]);
 
   console.log("render");
 
@@ -176,13 +163,13 @@ function App() {
         setSelectedRows={setSelectedRows}
         checkboxed={false}
         rowHoverStyle={{
-          background: false,
+          background: true,
           border: true,
         }}
-        // onRowClick={(row) => {
-        //   console.log(row);
-        // }}
-        selectedNode={
+        onRowClick={(row) => {
+          console.log(row);
+        }}
+        checkedActionsBar={
           <>
             <span className="mr">{selectedRows.length} rows selected</span>
             <button className="mr">send</button>
@@ -192,15 +179,15 @@ function App() {
         }
       />
 
-      <img
-        src={arrowIcon}
-        width={16}
-        className="rotate-90"
+      <button
         onClick={(e) => {
-          e.stopPropagation();
-          console.log("asdasd");
+          const temp = [...columns].reverse();
+
+          setColumns(temp);
         }}
-      />
+      >
+        change data
+      </button>
     </div>
   );
 }

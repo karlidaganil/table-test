@@ -12,7 +12,7 @@ import classNames from "classnames";
 
 const columnHelper = createColumnHelper();
 
-const checkboxes = [
+const checkboxObj = [
   {
     accessor: "checkbox",
     header: ({ table }) => (
@@ -35,28 +35,18 @@ const GdlTableCheckbox = ({
   columns,
   checkboxed,
   setSelectedRows,
-  selectedNode,
+  checkedActionsBar,
   onRowClick = () => {},
   rowHoverStyle,
 }) => {
-  const $columns = columns.map((column) =>
-    columnHelper.accessor(column.accessor, Object.assign({}, column))
-  );
-
-  const $columnsCheckbox = [...checkboxes, ...columns].map((column) =>
-    columnHelper.accessor(column.accessor, Object.assign({}, column))
-  );
+  const $columns = checkboxed ? [...checkboxObj, ...columns] : columns;
 
   const table = useReactTable({
     data,
-    columns: checkboxed ? $columnsCheckbox : $columns,
+    columns: $columns.map((column) =>
+      columnHelper.accessor(column.accessor, Object.assign({}, column))
+    ),
     getCoreRowModel: getCoreRowModel(),
-    // getCoreRowModel: getCoreRowModel({
-    //   selectedRows,
-    //   setSelectedRows: (rows) => {
-    //     console.log(rows);
-    //   },
-    // }),
   });
 
   const { getHeaderGroups, getRowModel, getSelectedRowModel } = table;
@@ -72,8 +62,6 @@ const GdlTableCheckbox = ({
 
   const isAnyRowSelected = getSelectedRowModel().rows.length > 0;
 
-  console.log(getSelectedRowModel());
-
   return (
     <>
       {isAnyRowSelected && (
@@ -82,7 +70,7 @@ const GdlTableCheckbox = ({
             checked={table.getIsAllRowsSelected()}
             onChange={table.getToggleAllRowsSelectedHandler()}
           ></Checkbox>
-          {selectedNode}
+          {checkedActionsBar}
         </div>
       )}
       <table>
