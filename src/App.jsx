@@ -25,8 +25,7 @@ const $data = [
     deal: "Josh buys 1 000 000 022",
     tradeDate: "21/09/2022",
     reference: "X Broker: BLMG Purpose: TRD Folder",
-    status:
-      "Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum Warning Lorem ipsum   Warning Lorem ipsum Warning Lorem ipsum",
+    status: "Lorem ipsum Warning Lorem ipsum",
   },
   {
     platform: "BLMG",
@@ -40,37 +39,37 @@ const $data = [
 ];
 
 const $columns = [
-  {
-    accessor: "move",
-    header: "",
-    cell: () => (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <img
-          src={arrowIcon}
-          width={16}
-          onClick={(e) => {
-            e.stopPropagation();
-            console.log("up");
-          }}
-        />
-        <img
-          src={arrowIcon}
-          width={16}
-          className="rotate-90"
-          onClick={(e) => {
-            e.stopPropagation();
-            console.log("down");
-          }}
-        />
-      </div>
-    ),
-    showOnRowHover: true,
-  },
+  // {
+  //   accessor: "move",
+  //   header: "",
+  //   cell: () => (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         flexDirection: "column",
+  //       }}
+  //     >
+  //       <img
+  //         src={arrowIcon}
+  //         width={16}
+  //         onClick={(e) => {
+  //           e.stopPropagation();
+  //           console.log("up");
+  //         }}
+  //       />
+  //       <img
+  //         src={arrowIcon}
+  //         width={16}
+  //         className="rotate-90"
+  //         onClick={(e) => {
+  //           e.stopPropagation();
+  //           console.log("down");
+  //         }}
+  //       />
+  //     </div>
+  //   ),
+  //   showOnRowHover: true,
+  // },
   {
     accessor: "platform",
     header: "Platform",
@@ -153,12 +152,13 @@ function App() {
   return (
     <div
       style={{
-        width: "100%",
+        width: "80%",
         padding: "50px",
       }}
     >
       <GdlTableCheckbox
         data={data}
+        setData={setData}
         columns={columns}
         setSelectedRows={setSelectedRows}
         checkboxed={false}
