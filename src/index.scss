@@ -2,7 +2,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-size: 13px;
 }
 
 body {
@@ -22,6 +21,7 @@ tbody tr td {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   white-space: pre-line;
+  font-size: 13px;
   &:not(.right-corner) {
     border-right: 1px solid #e5e5e5;
   }
@@ -46,6 +46,7 @@ thead tr th {
   padding: 0px 15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  font-size: 14px;
   &:not(.right-corner) {
     border-right: 1px solid #e5e5e5;
   }
