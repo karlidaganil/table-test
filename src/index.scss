@@ -65,15 +65,6 @@ thead tr th {
   margin: 0px 10px;
 }
 
-tr:not(.no-hover-bg) {
-  &:hover {
-    background-color: #eaf7ee;
-    td {
-      background-color: transparent;
-    }
-  }
-}
-
 table {
   tbody {
     tr:not(.no-hover-border) {
@@ -87,6 +78,14 @@ table {
         }
         .left-corner {
           border-left: 1px solid #03ea76;
+        }
+      }
+    }
+    tr:not(.no-hover-bg) {
+      &:hover {
+        background-color: #eaf7ee;
+        td {
+          background-color: transparent;
         }
       }
     }

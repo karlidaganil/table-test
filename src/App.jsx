@@ -84,16 +84,16 @@ function App() {
       accessor: "reference",
       header: "Reference",
       // className: "reference-column",
-      style: {
-        backgroundColor: "#EAF7EE",
-      },
+      // style: {
+      //   backgroundColor: "#EAF7EE",
+      // },
     },
     {
       accessor: "status",
       header: "Status",
-      style: {
-        backgroundColor: "#EBF4FF",
-      },
+      // style: {
+      //   backgroundColor: "#EBF4FF",
+      // },
     },
     {
       header: <img src={settingsIcon} />,
@@ -132,7 +132,7 @@ function App() {
         checkboxed={false}
         rowHoverStyle={{
           background: true,
-          border: false,
+          border: true,
         }}
         selectedNode={
           <>
