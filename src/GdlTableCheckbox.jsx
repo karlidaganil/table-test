@@ -34,6 +34,7 @@ const GdlTableCheckbox = ({
   checkboxed,
   setSelectedRows,
   selectedNode,
+  rowHoverStyle,
 }) => {
   const $columns = columns.map((column) => {
     const obj = {};
@@ -82,6 +83,10 @@ const GdlTableCheckbox = ({
 
   console.log(getSelectedRowModel());
 
+  const rowHoverClassNames = `${
+    !rowHoverStyle.background ? "no-hover-bg" : ""
+  } ${!rowHoverStyle.border ? "no-hover-border" : ""}`;
+
   return (
     <>
       {isAnyRowSelected && (
@@ -121,7 +126,7 @@ const GdlTableCheckbox = ({
         )}
         <tbody>
           {getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.id} className={rowHoverClassNames}>
               {row.getVisibleCells().map((cell, index) => (
                 <td
                   key={cell.id}

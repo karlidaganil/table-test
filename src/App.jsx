@@ -96,7 +96,11 @@ function App() {
         data={data}
         columns={columns}
         setSelectedRows={setSelectedRows}
-        checkboxed={false}
+        checkboxed={true}
+        rowHoverStyle={{
+          background: false,
+          border: false,
+        }}
         selectedNode={
           <>
             <span className="mr">{selectedRows.length} rows selected</span>
@@ -106,9 +110,6 @@ function App() {
           </>
         }
       />
-      {/* <div className="test-box">test</div>
-      <div className="test-box">test</div>
-      <div className="test-box">test</div> */}
     </div>
   );
 }

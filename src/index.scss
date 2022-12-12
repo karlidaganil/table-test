@@ -61,7 +61,7 @@ thead tr th {
   margin: 0px 10px;
 }
 
-tr {
+tr:not(.no-hover-bg) {
   &:hover {
     background-color: #eaf7ee;
     td {
@@ -72,7 +72,7 @@ tr {
 
 table {
   tbody {
-    tr {
+    tr:not(.no-hover-border) {
       &:hover {
         td {
           border-top: 1px solid #03ea76;
